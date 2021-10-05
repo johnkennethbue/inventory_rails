@@ -1,0 +1,40 @@
+<%= form_with(model: game) do |form| %>
+
+    <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> occured. Please check the following:</h2>
+
+      <ul>
+        <% game.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class = "section3">
+<%= form.label :platform %>
+<%= form.select :platform, ['PS4', 'PS5']%>
+</div>
+
+<div class = "section1">
+<%= form.label :game_title %>
+<%= form.text_field :game_title %>
+</div>
+
+<div class = "section2">
+<%=form.label :description %>
+<%= form.text_field :description %>
+</div>
+
+<div class = "section4">
+<%= form.label :quantity %>
+<%= form.number_field :quantity, in: 1..20, step: 1 %>
+</div>
+
+<div class = "submit">
+<%= form.submit %>
+</div>
+
+<% end %>

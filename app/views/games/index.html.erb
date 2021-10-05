@@ -1,0 +1,33 @@
+<h1>PS4/PS5 Games Inventory Tracker</h1>
+
+<table>
+<thead>
+  <tr>
+  <th> Control No. </>
+  <th> Platform </>
+  <th> Quantity </>
+  <th> Game Title </>
+  <th> Description </>
+  <th> Date Created </>
+  <th> Actions </>
+  </tr>
+</thead>
+
+<tbody>
+<% @games.each do |game| %>
+    <tr>
+    <td><%= game.id %> </td>
+    <td><%= game.platform %> </td>
+    <td><%= game.quantity %> </td>
+    <td><%= game.game_title %> </td>
+    <td><%= game.description %> </td>
+    <td><%= game.created_at %> </td>
+    <td><%= link_to 'Overview', game %></td>
+    <td><%= link_to 'Update Info', edit_game_path(game) %></td>
+    <td><%= link_to 'Delete Game', game, method: :delete %></td>
+    </tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to 'Add game to the inventory', new_game_path %>
